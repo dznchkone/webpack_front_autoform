@@ -17,7 +17,7 @@ gulp.task("build-js", () => {
                 .pipe(webpack({
                     mode: 'development',
                     output: {
-                        filename: 'script.js'
+                        filename: 'index.js'
                     },
                     watch: false,
                     devtool: "source-map",
@@ -40,7 +40,7 @@ gulp.task("build-js", () => {
                         ]
                       }
                 }))
-                .pipe(gulp.dest(dist))
+                .pipe(gulp.dest(dist+"/js"))
                 .on("end", browsersync.reload);
 });
 
@@ -69,7 +69,7 @@ gulp.task("build-prod-js", () => {
                 .pipe(webpack({
                     mode: 'production',
                     output: {
-                        filename: 'script.js'
+                        filename: 'index.js'
                     },
                     module: {
                         rules: [
@@ -89,7 +89,8 @@ gulp.task("build-prod-js", () => {
                         ]
                       }
                 }))
-                .pipe(gulp.dest(dist));
+                .pipe(gulp.dest(dist+"/js"));
 });
 
+gulp.task("build-prod", gulp.parallel("copy-html", "copy-assets", "build-prod-js"));
 gulp.task("default", gulp.parallel("watch", "build"));

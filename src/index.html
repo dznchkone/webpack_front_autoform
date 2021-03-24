@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="assets/styles/normalize.css">
+    <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
     <title>Form for configuration</title>
 </head>
 <body>
@@ -58,11 +58,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="login">Login</label>
-                            <input type="text" name="LOGIN" id="login" class="form-control">
+                        <input type="text" name="LOGIN" id="login" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="password">Password</label>
-                            <input type="text" name="PASSWORD" id="password" class="form-control">
+                        <input type="text" name="PASSWORD" id="password" class="form-control">
                     </div>
                     <button class="btn btn-primary">Op</button>
                 </form>
@@ -70,7 +70,19 @@
         </div>
     </div>
 </div>
-
+<div style="position: absolute; top: 0; right: 0;">
+    <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="mr-auto text-danger">Ошибка!</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
 <script src="js/index.js"></script>
 </body>
 </html>
