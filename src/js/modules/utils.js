@@ -7,7 +7,7 @@ const fetchConfig = async (url, form) => {
     if (response.ok) {
         return await response.json();
     } else {
-        const msg = "Ошибка HTTP: " + response.status;
+        const msg = `После запроса на ${url} произошла ошибка HTTP: ${response.status}`;
         return {
             error: -1,
             msg
@@ -15,6 +15,16 @@ const fetchConfig = async (url, form) => {
     }
 }
 
+const downloadFile = (res)=>{
+    let link = document.createElement('a');
+    link.href = `/cfg/${res.msg}`;
+    link.href = `${res.msg}`;
+    link.download = `config.txt`;
+    link.download = `${res.msg}`;
+    link.click();
+}
+
 export {
-    fetchConfig
+    fetchConfig,
+    downloadFile
 }
