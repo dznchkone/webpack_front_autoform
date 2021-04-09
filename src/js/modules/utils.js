@@ -20,6 +20,7 @@ const downloadFile = (msg)=>{
     link.href = `${msg}`;
     link.download = `${msg}`;
     link.click();
+    link.remove();
 }
 
 export {
