@@ -15,12 +15,10 @@ const fetchConfig = async (url, form) => {
     }
 }
 
-const downloadFile = (res)=>{
+const downloadFile = (msg)=>{
     let link = document.createElement('a');
-    link.href = `/cfg/${res.msg}`;
-    link.href = `${res.msg}`;
-    link.download = `config.txt`;
-    link.download = `${res.msg}`;
+    link.href = `${msg}`;
+    link.download = `${msg}`;
     link.click();
 }
 

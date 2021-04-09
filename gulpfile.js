@@ -4,7 +4,8 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-const dist = "./dist/";
+let dist = "./dist/";
+
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
@@ -92,5 +93,20 @@ gulp.task("build-prod-js", () => {
                 .pipe(gulp.dest(dist+"/js"));
 });
 
-gulp.task("build-prod", gulp.parallel("copy-html", "copy-assets", "build-prod-js"));
+gulp.task("copy-html-prod", () => {
+    dist = "./prod/";
+    return gulp.src("./src/index.html")
+        .pipe(gulp.dest(dist))
+        .pipe(browsersync.stream());
+});
+
+gulp.task("copy-assets-prod", () => {
+    dist = "./prod/";
+    return gulp.src("./src/assets/**/*.*")
+        .pipe(gulp.dest(dist + "/assets"))
+        .on("end", browsersync.reload);
+});
+
+
+gulp.task("build-prod", gulp.parallel("copy-html-prod", "copy-assets-prod", "build-prod-js"));
 gulp.task("default", gulp.parallel("watch", "build"));

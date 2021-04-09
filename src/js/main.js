@@ -10,7 +10,7 @@ generate.onsubmit = async (e) => {
     e.preventDefault();
     const res =  await  fetchConfig('/cgi-bin/form.py', generate);
     if (!res.error) {
-        downloadFile(res);
+        downloadFile(res.msg);
     } else {
         showToast(res.msg)
     }
@@ -20,7 +20,7 @@ getConfig.onsubmit = async (e) =>{
     e.preventDefault();
    const res = await  fetchConfig('/cgi-bin/auth.py', getConfig);
     if (!res.error) {
-        downloadFile(res);
+        downloadFile(res.msg);
     } else {
         showToast(res.msg)
     }

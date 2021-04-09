@@ -1,12 +1,12 @@
 const toastContainer = document.querySelector('.toast-container');
 
-const showToast = (msg) =>{
+const showToast = (msg) => {
     const toast = document.createElement('div');
-    toast.classList.add('toast','fade','show','mt-2');
+    toast.classList.add('toast', 'fade', 'show', 'mt-2');
     toast.innerHTML = `
             <div class="toast-header">
                 <strong class="mr-auto text-danger">Ошибка!</strong>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <button type="button" class="ml-2 mb-1 close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -16,20 +16,22 @@ const showToast = (msg) =>{
     `;
     toastContainer.appendChild(toast);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         toast.classList.remove('show');
-        setTimeout(()=>{
+        setTimeout(() => {
             toastContainer.removeChild(toast)
-        }, 500);
-    },15000)
+        }, 1100);
+    }, 15000)
 
 
-    toast.querySelector('.close').addEventListener('click',(e)=>{
-        toast.classList.remove('show');
-        setTimeout(()=>{
-            toastContainer.removeChild(toast)
-        }, 500);
-    });
+    toast
+        .querySelector('.close')
+        .addEventListener('click', () => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toastContainer.removeChild(toast)
+            }, 500);
+        });
 
 }
 
